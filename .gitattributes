@@ -1,2 +1,52 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+PRODUCT:
+
+Represents different models of Nike shoes available for sale.
+Attributes:
+product_id: Unique identifier (PK) for each product.
+model_name: Name of the shoe model.
+size: The size of the shoe.
+price: Retail price of the shoe.
+stock_quantity: Quantity of the product currently in stock.
+CUSTOMER:
+
+Contains information about customers who purchase shoes.
+Attributes:
+customer_id: Unique identifier (PK) for each customer.
+first_name: Customer's first name.
+last_name: Customer's last name.
+email: Customer's email address.
+phone: Customer's contact number.
+SALE:
+
+Records transactions linking customers to the products they purchase.
+Attributes:
+sale_id: Unique identifier (PK) for each sale.
+product_id: Foreign key (FK) referencing the product sold.
+customer_id: Foreign key (FK) referencing the customer making the purchase.
+sale_date: Date when the transaction occurred.
+sale_amount: Total amount for the sale.
+INVENTORY:
+
+Tracks stock levels of various shoe models.
+Attributes:
+inventory_id: Unique identifier (PK) for each inventory record.
+product_id: Foreign key (FK) referencing the product.
+quantity: Quantity of the product available in inventory.
+last_updated: Date when the inventory record was last updated.
+Relationships:
+PRODUCT to SALE:
+
+A product can be sold in many sales (one-to-many relationship).
+Each sale must reference a product (FK in SALE).
+CUSTOMER to SALE:
+
+A customer can make many purchases (one-to-many relationship).
+Each sale must reference a customer (FK in SALE).
+PRODUCT to INVENTORY:
+
+A product can have one inventory record (one-to-one relationship).
+The inventory must reference a product (FK in INVENTORY).
+Significance of Relationships:
+These relationships support business operations by linking customers to their purchases, allowing for tracking of sales performance, managing inventory levels, and ensuring that customer data is efficiently organized. The structure enables the retail store to monitor stock levels, manage sales records, and maintain customer relationships effectively.
